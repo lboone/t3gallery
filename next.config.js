@@ -11,7 +11,7 @@ const config = {
     },
     esling: {
         ignoreDuringBuilds: true,
-    }
+    },
 };
 
 export default config;
