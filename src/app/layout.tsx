@@ -8,6 +8,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import React from "react";
 import { Toaster } from "~/components/ui/sonner";
+import { CSPostHogProvider } from "./_analytics/provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,21 +31,22 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <NextSSRPlugin 
-          routerConfig={extractRouterConfig(ourFileRouter)}
-        />
-        <body className={`font-sans ${inter.variable} dark`}>
-          <div className="h-screen grid grid-rows-[auto,1fr]">
-            <TopNav />
-            <div className="overflow-y-scroll">{children}</div>
-          </div>
-          {modal}
-          <div id="modal-root" />
-          <Toaster />
-        </body>
-
-      </html>
+      <CSPostHogProvider>
+        <html lang="en">
+          <NextSSRPlugin 
+            routerConfig={extractRouterConfig(ourFileRouter)}
+          />
+          <body className={`font-sans ${inter.variable} dark`}>
+            <div className="h-screen grid grid-rows-[auto,1fr]">
+              <TopNav />
+              <div className="overflow-y-scroll">{children}</div>
+            </div>
+            {modal}
+            <div id="modal-root" />
+            <Toaster />
+          </body>
+        </html>
+      </CSPostHogProvider>
     </ClerkProvider>
   );
 }

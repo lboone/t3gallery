@@ -2,7 +2,6 @@
 import {toast} from "sonner"
 import { useRouter } from "next/navigation";
 import { useUploadThing } from "~/utils/uploadthing";
-import { useEffect } from "react";
 
 // inferred input off useUploadThing
 type Input = Parameters<typeof useUploadThing>;
