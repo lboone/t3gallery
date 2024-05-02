@@ -151,11 +151,11 @@ export function SimpleUploadButton(){
             });
             toast.dismiss("upload-begin");
             toast(
-                <div className="flex gap-2 items-center">
-                    <ErrorSVG /> <span className="text-lg">Upload Error: {error.message}</span>
+                <div className="flex gap-2 items-center text-red-500">
+                    <ErrorSVG /> <span className="text-lg">Error: Unable to upload your file!</span>
                 </div>,
             {
-                duration: 10000,
+                duration: 5000,
                 id: "upload-error",
             });
         },
